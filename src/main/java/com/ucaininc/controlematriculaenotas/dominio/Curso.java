@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "CURSO")
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Curso {
 
     @Id

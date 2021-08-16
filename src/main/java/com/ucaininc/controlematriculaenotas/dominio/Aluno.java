@@ -11,7 +11,7 @@ import java.util.List;
 @Getter
 @Entity
 @Table(name = "ALUNO")
-@NoArgsConstructor(access = AccessLevel.PUBLIC)
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Aluno {
 
     @Id
@@ -35,5 +35,8 @@ public class Aluno {
     private void validarCamposObrigatorios(String nome, List<Disciplina> disciplinas) {
         ExcecaoDeDominio.quandoTextoVazioOuNulo(nome, "Não é possível informar um nome vazio para um aluno.");
         ExcecaoDeDominio.quandoListaNulaOuVazia(disciplinas, "Não é possível informar um aluno sem desciplinas.");
+
+        Boolean tamanhoDeDisciplinasEhMenorQueTres = disciplinas.size() < 3;
+        ExcecaoDeDominio.quandoVerdadeiro(tamanhoDeDisciplinasEhMenorQueTres,"Um aluno deve se matricular em pelo menos três disciplinas.");
     }
 }
